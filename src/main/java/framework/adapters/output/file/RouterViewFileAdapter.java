@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class RouterViewFileAdapter implements RouterViewOutputPort {
-
+    private static RouterViewFileAdapter fileAdapter;
     @Override
     public List<Router> fetchRouters() {
         return readFileAsString();
@@ -31,5 +31,11 @@ public class RouterViewFileAdapter implements RouterViewOutputPort {
             });
         }
         return routers;
+    }
+    public static RouterViewFileAdapter getInstance(){
+        if (fileAdapter == null){
+            fileAdapter = new RouterViewFileAdapter();
+        }
+        return fileAdapter;
     }
 }

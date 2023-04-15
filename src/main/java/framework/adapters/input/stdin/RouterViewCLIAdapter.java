@@ -1,5 +1,6 @@
 package framework.adapters.input.stdin;
 
+import application.ports.input.RouterViewInputPort;
 import application.usecases.RouterViewUseCase;
 import domain.entity.Router;
 import domain.valueobjects.RouterType;
@@ -14,6 +15,7 @@ public class RouterViewCLIAdapter {
         return routerViewUseCase.getRouters(Router.filterRouterByType(RouterType.valueOf(type)));
     }
     private void setAdapters(){
-        this.routerViewUseCase = new RouterViewUseCase(RouterViewFileAdapter.getInstance());
+        routerViewUseCase = new RouterViewInputPort(RouterViewFileAdapter.getInstance());
     }
+
 }
