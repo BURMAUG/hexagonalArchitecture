@@ -8,7 +8,7 @@ import framework.adapters.output.file.RouterViewFileAdapter;
 
 public class RouterViewCLIAdapter {
     RouterViewUseCase routerViewUseCase;
-    RouterViewCLIAdapter(){
+    public RouterViewCLIAdapter(){
         setAdapters();
     }
     public java.util.List<Router> obtainRelatedRouters(String type){

@@ -1,7 +1,9 @@
 package domain.entity;
 
+import domain.valueobjects.RouterId;
 import domain.valueobjects.RouterType;
 
+import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -25,6 +27,11 @@ public class Router {
     public static java.util.List<Router> filterRouter(java.util.List<Router> routers, Predicate<Router> predicate){
         return routers.stream().filter(predicate).collect(Collectors.toList());
     }
+
+    public static List<Router> retrieveRouter(List<Router> routers, Predicate<Router> filter) {
+        return routers.stream().filter(filter).collect(Collectors.toList());
+    }
+
     public RouterType getRouterType(){
         return routerType;
     }

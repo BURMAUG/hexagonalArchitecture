@@ -2,6 +2,7 @@ package framework.adapters.output.file;
 
 import application.ports.output.RouterViewOutputPort;
 import domain.entity.Router;
+import domain.valueobjects.RouterId;
 import domain.valueobjects.RouterType;
 
 import java.io.BufferedReader;
@@ -21,12 +22,12 @@ public class RouterViewFileAdapter implements RouterViewOutputPort {
         List<Router> routers = new ArrayList<>();
         try(Stream<String> stream = new BufferedReader(
                 new InputStreamReader(
-                        RouterViewFileAdapter.class.getResourceAsStream("routerss.txt"))).lines()){
+                        RouterViewFileAdapter.class.getResourceAsStream("routers.txt"))).lines()){
             stream.forEach(line -> {
                 String[] routerEntry = line.split(";");
                 var id = routerEntry[0];
                 var type = routerEntry[1];
-                Router router = new Router(RouterType.valueOf(type), RouterId.of(id));
+                Router router = new Router(RouterType.valueOf(type), RouterId.withId(id));
                 routers.add(router);
             });
         }

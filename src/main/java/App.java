@@ -1,5 +1,9 @@
+import framework.adapters.input.stdin.RouterViewCLIAdapter;
+
 public class App {
     public static void main(String[] args) {
-        System.out.println("Burmau");
+        RouterViewCLIAdapter cli = new RouterViewCLIAdapter();
+        String type = "CORE";
+        System.out.println(cli.obtainRelatedRouters(type));
     }
 }
